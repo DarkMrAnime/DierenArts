@@ -33,7 +33,7 @@
             <TextBox x:Name="txtTel" Height="23" TextWrapping="Wrap" HorizontalAlignment="Left" Width="200"/>
             <Label Content="Email" Background="#FF20C4CE" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left" Width="200" Height="28" VerticalAlignment="Bottom"/>
             <TextBox x:Name="txtMail" Height="23" TextWrapping="Wrap" HorizontalAlignment="Left" Width="200"/>
-            <Button x:Name="BtnAddC" Content="Toevoegen" Height="30" Background="#FF006F76" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Foreground="White" Click="BtnAddC_Click"/>
+            <Button x:Name="BtnAddC" Content="Voeg toe" Height="30" Background="#FF006F76" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Foreground="White" Click="BtnAddC_Click"/>
         </StackPanel>
         <DataGrid x:Name="dgKlant" HorizontalAlignment="Left" Height="120" Margin="200,0,-0.4,0" VerticalAlignment="Top" Width="594" SelectionChanged="dgKlant_SelectionChanged"/>
 

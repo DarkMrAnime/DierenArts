@@ -1,0 +1,56 @@
+﻿<Window x:Class="DierenArts.ToevoegenDier"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DierenArts"
+        mc:Ignorable="d"
+        Title="ToevoegenDier" Height="450" Width="800">
+    <Grid>
+        <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="420" Width="794" Margin="0,0,-0.4,0" Opacity="0.5">
+            <Label.Background>
+                <ImageBrush ImageSource="Dierenarts.png"/>
+            </Label.Background>
+        </Label>
+        <Label Content="" HorizontalAlignment="Left" VerticalAlignment="Top" Height="420" Width="794" Margin="0,0,-0.4,0" Opacity="0.5">
+            <Label.Background>
+                <ImageBrush ImageSource="Dierenarts.png"/>
+            </Label.Background>
+        </Label>
+        <StackPanel HorizontalAlignment="Right" Height="420" VerticalAlignment="Top" Width="200" Margin="0,0,593.6,0">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF58B6AD" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <Label Content="Dier Toevoegen" Background="#FF006F76" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="200" Height="36"/>
+            <Label Content="Naam" Background="#FF20C4CE" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left" Width="200" Height="28" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="txtNaam" Height="23" TextWrapping="Wrap" HorizontalAlignment="Left" Width="200"/>
+            <Label Content="DierSoort" Background="#FF20C4CE" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Foreground="White" HorizontalAlignment="Left" Width="200" Height="28" VerticalAlignment="Bottom"/>
+            <TextBox x:Name="txtSoort" Height="23" TextWrapping="Wrap"/>
+            <Label Content="Bazen" Background="#FF006F76" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="24" Foreground="White" HorizontalAlignment="Left" Width="200" Height="36"/>
+            <ComboBox x:Name="cbBazen">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <TextBlock.Text>
+                                <Binding Path="Voornaam"/>
+                            </TextBlock.Text>
+                        </TextBlock>
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+            <Label Content="" Height="186"/>
+            <Button x:Name="BtnAddD" Content="Toevoegen" Height="42" Foreground="White" Background="#FF006F76" FontFamily="Tw Cen MT Condensed Extra Bold" FontSize="16" Click="BtnAddD_Click"/>
+        </StackPanel>
+        <DataGrid x:Name="dgDier" HorizontalAlignment="Left" Height="100" Margin="200,0,-0.4,0" VerticalAlignment="Top" Width="594" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Dier.DierID}" ClipboardContentBinding="{x:Null}" Header="ID"/>
+                <DataGridTextColumn Binding="{Binding Dier.Naam}" ClipboardContentBinding="{x:Null}" Header="Naam"/>
+                <DataGridTextColumn Binding="{Binding Dier.DierSoort}" ClipboardContentBinding="{x:Null}" Header="Soort"/>
+                <DataGridTextColumn Binding="{Binding Baa.Voornaam}" ClipboardContentBinding="{x:Null}" Header="Voornaam"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

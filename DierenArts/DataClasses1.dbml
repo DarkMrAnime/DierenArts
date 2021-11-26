@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="DierenArts" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(local)\SQLEXPRESS;Initial Catalog=DierenArts;Integrated Security=True" SettingsObjectName="DierenArts.Properties.Settings" SettingsPropertyName="DierenArtsConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Baas_Dier" Member="Baas_Diers">
+    <Type Name="Baas_Dier">
+      <Column Name="BaasDierID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BaasID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Dier_Baas_Dier" Member="Dier" ThisKey="DierID" OtherKey="DierID" Type="Dier" IsForeignKey="true" />
+      <Association Name="Baa_Baas_Dier" Member="Baa" ThisKey="BaasID" OtherKey="BaasID" Type="Baa" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Dier" Member="Diers">
+    <Type Name="Dier">
+      <Column Name="DierID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Naam" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DierSoort" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Association Name="Dier_Baas_Dier" Member="Baas_Diers" ThisKey="DierID" OtherKey="DierID" Type="Baas_Dier" />
+      <Association Name="Dier_Afspraak" Member="Afspraaks" ThisKey="DierID" OtherKey="DierID" Type="Afspraak" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Baas" Member="Baas">
+    <Type Name="Baa">
+      <Column Name="BaasID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Voornaam" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Achternaam" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Adress" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Postcode" Type="System.String" DbType="VarChar(8) NOT NULL" CanBeNull="false" />
+      <Column Name="Woonplaats" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="Telefoon" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(80) NOT NULL" CanBeNull="false" />
+      <Association Name="Baa_Baas_Dier" Member="Baas_Diers" ThisKey="BaasID" OtherKey="BaasID" Type="Baas_Dier" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Time" Member="Times">
+    <Type Name="Time">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tijd" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Association Name="Time_Afspraak" Member="Afspraaks" ThisKey="ID" OtherKey="Time_ID" Type="Afspraak" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Afspraak" Member="Afspraaks">
+    <Type Name="Afspraak">
+      <Column Name="AfspraakID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Datum" Type="System.DateTime" DbType="Date NOT NULL" CanBeNull="false" />
+      <Column Name="Time_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AfspraakSoort" Type="System.String" DbType="VarChar(60) NOT NULL" CanBeNull="false" />
+      <Column Name="DierID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Dier_Afspraak" Member="Dier" ThisKey="DierID" OtherKey="DierID" Type="Dier" IsForeignKey="true" />
+      <Association Name="Time_Afspraak" Member="Time" ThisKey="Time_ID" OtherKey="ID" Type="Time" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
